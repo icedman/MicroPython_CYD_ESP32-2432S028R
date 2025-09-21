@@ -20,7 +20,7 @@ def color565(r, g, b):
         g (int): Green value.
         b (int): Blue value.
     """
-    return (r & 0xf8) << 8 | (g & 0xfc) << 3 | b >> 3
+    return (b & 0xf8) << 8 | (g & 0xfc) << 3 | r >> 3
 
 
 class Display(object):
@@ -621,7 +621,7 @@ class Display(object):
             bg_r = (background & 0xF800) >> 8
             bg_g = (background & 0x07E0) >> 3
             bg_b = (background & 0x1F) << 3
-            fbuf.fill(color565(bg_b, bg_r, bg_g))
+            fbuf.fill(color565(bg_r, bg_g, bg_b))
         fbuf.text(text, 0, 0, color565(b, r, g))
         if rotate == 0:
             self.block(x, y, x + w - 1, y + (h - 1), buf)

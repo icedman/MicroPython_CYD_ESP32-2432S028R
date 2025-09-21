@@ -157,8 +157,8 @@ class CYD(object):
             display_height (Default = 320): Reset if needed.
         '''
         # Display
-        hspi = SPI(1, baudrate=40000000, sck=Pin(14), mosi=Pin(13))
-        self.display = Display(hspi, dc=Pin(2), cs=Pin(15), rst=Pin(0), width=display_width, height=display_height)
+        hspi = SPI(1, baudrate=40000000, sck=Pin(14), mosi=Pin(13), miso=Pin(12))
+        self.display = Display(hspi, dc=Pin(2), cs=Pin(15), rst=Pin(0), width=display_width, height=display_height, rotation=90)
         self._x = 0
         self._y = 0
 
@@ -215,7 +215,7 @@ class CYD(object):
         This function is called each time the screen is touched.
         '''
         # X needs to be flipped
-        x = (self.display.width - 1) - x
+        y = (self.display.height - 1) - y
 
         self._x = x
         self._y = y

@@ -39,6 +39,6 @@ while True:
     x = min(max(((cyd.display.width - 1) - x), (r+1)),(cyd.display.width-(r+1)))
     
     # Create circle
-    cyd.display.fill_circle(x, y, r, colors[c])
+    cyd.display.fill_circle(x, y, r, cyd.GREEN)
 
 cyd.shutdown()
